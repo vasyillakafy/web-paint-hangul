@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/global.css') }}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/canvas.js') }}" defer></script>
+  <title>Huruf Vokal</title>
+</head>
+<body class="bgcolor">
+
+  <!-- navbar -->
+  <nav class="navbar-float">
+    <section class="nav-item mx-auto tsize">
+      <div class="dropdown mx-2">
+        <button class="nav-text-active dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          BELAJAR
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="huruf-konsonan">Huruf Konsonan</a></li>
+          <li><a class="dropdown-item" href="#">Huruf Vokal</a></li>
+          <li><a class="dropdown-item" href="penulisan-silabel">Penulisan Silabel</a></li>
+        </ul>
+      </div>
+      <a href="latihan" class="nav-text-active mx-2">LATIHAN</a>
+      <a href="/" class="nav-text-active mx-2">TUTORIAL</a>
+    </section>
+  </nav>
+
+  <!-- breadcrumb -->
+  <div class="container-fluid px-5 ptop">
+    <section aria-label="breadcrumb">
+      <ol class="breadcrumb tsize">
+        <li class="breadcrumb-item">Belajar</li>
+        <li class="breadcrumb-item">Huruf Vokal</li>
+      </ol>
+    </section>
+  </div>
+
+  <!-- konten -->
+  <div class="card-container p-3">
+    <div class="row">
+      <div class="col center">
+        <img src="{{ url_for('static', filename='assets/vokal/a.png') }}" alt="" class="card1 pv" onclick="openModal('a', 'modalv')">
+      </div>
+      <div class="col center">
+        <img src="{{ url_for('static', filename='assets/vokal/ya.png') }}" alt="" class="card1 pv" onclick="openModal('ya', 'modalv')">
+      </div>
+      <div class="col center">
+        <img src="{{ url_for('static', filename='assets/vokal/eo.png') }}" alt="" class="card1 pv" onclick="openModal('eo', 'modalv')">
+      </div>
+      <div class="col center">
+        <img src="{{ url_for('static', filename='assets/vokal/yeo.png') }}" alt="" class="card1 pv" onclick="openModal('yeo', 'modalv')">
+      </div>
+      <div class="col center">
+        <img src="{{ url_for('static', filename='assets/vokal/o.png') }}" alt="" class="card1 pv" onclick="openModal('o', 'modalv')">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col center">
+        <img src="{{ url_for('static', filename='assets/vokal/yo.png') }}" alt="" class="card1 pv" onclick="openModal('yo', 'modalv')">
+      </div>
+      <div class="col center">
+        <img src="{{ url_for('static', filename='assets/vokal/u.png') }}" alt="" class="card1 pv" onclick="openModal('u', 'modalv')">
+      </div>
+      <div class="col center">
+        <img src="{{ url_for('static', filename='assets/vokal/yu.png') }}" alt="" class="card1 pv" onclick="openModal('yu', 'modalv')">
+      </div>
+      <div class="col center">
+        <img src="{{ url_for('static', filename='assets/vokal/eu.png') }}" alt="" class="card1 pv" onclick="openModal('eu', 'modalv')">
+      </div>
+      <div class="col center">
+        <img src="{{ url_for('static', filename='assets/vokal/i.png') }}" alt="" class="card1 pv" onclick="openModal('i', 'modalv')">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col center">
+        <img src="{{ url_for('static', filename='assets/vokal/ae.png') }}" alt="" class="card1 pv" onclick="openModal('ae', 'modalv')">
+      </div>
+      <div class="col center">
+        <img src="{{ url_for('static', filename='assets/vokal/yae.png') }}" alt="" class="card1 pv" onclick="openModal('yae', 'modalv')">
+      </div>
+      <div class="col center">
+        <img src="{{ url_for('static', filename='assets/vokal/e.png') }}" alt="" class="card1 pv" onclick="openModal('e', 'modalv')">
+      </div>
+      <div class="col center">
+        <img src="{{ url_for('static', filename='assets/vokal/ye.png') }}" alt="" class="card1 pv" onclick="openModal('ye', 'modalv')">
+      </div>
+    </div>
+  </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <img id="modalHeader" src="" alt="Modal Header" class="modal-header-img">
+          <span class="close" onclick="closeModal()">&times;</span>
+        </div>
+        <img id="modalImage" class="modal-content-img" src="" alt="Modal Image">
+      </div>
+    </div>
+
+  <!-- footer -->
+  <div>
+    <center class="m-2">&copy; 2023; vasyilla</center>
+  </div>
+</body>
+</html>

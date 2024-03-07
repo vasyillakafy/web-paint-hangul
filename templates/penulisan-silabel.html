@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="css/global.css">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/global.css') }}">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <title>Penulisan Silabel</title>
@@ -18,12 +18,13 @@
           BELAJAR
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" href="huruf-konsonan.html">Huruf Konsonan</a></li>
-          <li><a class="dropdown-item" href="huruf-vokal.html">Huruf Vokal</a></li>
+          <li><a class="dropdown-item" href="huruf-konsonan">Huruf Konsonan</a></li>
+          <li><a class="dropdown-item" href="huruf-vokal">Huruf Vokal</a></li>
           <li><a class="dropdown-item" href="#">Penulisan Silabel</a></li>
         </ul>
       </div>
-      <a href="latihan.html" class="nav-text-active mx-2">LATIHAN</a>
+      <a href="latihan" class="nav-text-active mx-2">LATIHAN</a>
+      <a href="/" class="nav-text-active mx-2">TUTORIAL</a>
     </section>
   </nav>
 
@@ -41,26 +42,26 @@
   <div class="card-container p-3">
     <div class="row my-5">
       <div class="col center">
-        <img src="assets/silabel/im.png" alt="" >
+        <img src="static/assets/silabel/im.png" alt="" class="img-silabel">
       </div>
       <div class="col center">
-        <img src="assets/silabel/im2.png" alt="" >
-      </div>
-    </div>
-    <div class="row my-5">
-      <div class="col center">
-        <img src="assets/silabel/imf.png" alt="" >
-      </div>
-      <div class="col center">
-        <img src="assets/silabel/imf2.png" alt="" >
+        <img src="static/assets/silabel/im2.png" alt="" class="img-silabel">
       </div>
     </div>
     <div class="row my-5">
       <div class="col center">
-        <img src="assets/silabel/imm.png" alt="" >
+        <img src="static/assets/silabel/imf.png" alt="" class="img-silabel">
       </div>
       <div class="col center">
-        <img src="assets/silabel/immf.png" alt="" >
+        <img src="static/assets/silabel/imf2.png" alt="" class="img-silabel">
+      </div>
+    </div>
+    <div class="row my-5">
+      <div class="col center">
+        <img src="static/assets/silabel/imm.png" alt="" class="img-silabel">
+      </div>
+      <div class="col center">
+        <img src="static/assets/silabel/immf.png" alt="" class="img-silabel">
       </div>
     </div>
   </div>

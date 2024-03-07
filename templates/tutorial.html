@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/global.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/canvas.js') }}" defer></script>
+    <title>Penulisan Silabel</title>
+  </head>
+<body class="bg-light">
+
+  <!-- navbar -->
+  <nav class="navbar-float">
+    <section class="nav-item mx-auto tsize">
+      <div class="dropdown mx-2">
+        <button class="nav-text-active dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          BELAJAR
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="huruf-konsonan">Huruf Konsonan</a></li>
+          <li><a class="dropdown-item" href="huruf-vokal">Huruf Vokal</a></li>
+          <li><a class="dropdown-item" href="penulisan-silabel">Penulisan Silabel</a></li>
+        </ul>
+      </div>
+      <a href="latihan" class="nav-text-active mx-2">LATIHAN</a>
+      <a href="#" class="nav-text-active mx-2">TUTORIAL</a>
+    </section>
+  </nav>
+
+  <!-- konten -->
+    <div class="container-fluid px-5 ptop">
+        <div class="row center">
+            <h4 class="center bold mb-4">TUTORIAL PENGGUNAAN</h4>
+        </div>
+        <div class="center mb-3">
+            <button class="button1 mx-3" onclick="scrollToElement('menu_latihan')">Menu Latihan</button>
+            <button class="button1 mx-3" onclick="scrollToElement('menu_belajar')">Menu Belajar</button>
+        </div>
+    </div>
+    <div class="container center">
+        <div class="col-sm-12 p-1">
+            <div class="card border-dark mb-3 shadow" id="menu_latihan">
+              <div class="card-body">
+                <div class="card-header center bg-primary text-white p-3"><h5>MENU LATIHAN</h5></div>
+                <p class="card-text text-danger bold mt-3">Untuk mencoba menu ini, disarankan menggunakan Laptop atau Komputer</p>
+                <p class="card-text">1. Pada navigation bar, pilih menu "LATIHAN"</p>
+                <p class="card-text">2. Arahkan kursor pada canvas hitam. Tulis silabel atau suku kata yang terdiri dari 2 huruf</p>
+                <p class="card-text">3. (1 konsonan + 1 vokal)</p>
+                <p class="card-text">4. Tuliskan silabel dengan jelas dan besar, <b>ditengah-tengah canvas</b></p>
+                <img src="{{ url_for('static', filename='assets/Capture.PNG') }}" style="border:  1px solid #000; width: 70%; height: auto;" alt="" class="card-img center">
+                <p class="card-text mt-3">5. Jika terdapat kesalahan dalam menulis, pada menu di bawah canvas, ubah "Kuas" menjadi "Penghapus"</p>
+                <img src="{{ url_for('static', filename='assets/Capture1.PNG') }}" style="border:  1px solid #000; width: 70%; height: auto;" alt="" class="card-img center">
+                <p class="card-text mt-3">6. Tulis kembali silabel dengan jelas dan besar ditengah-tengah canvas seperti gambar di bawah ini</p>
+                <img src="{{ url_for('static', filename='assets/Capture2.PNG') }}" style="border:  1px solid #000; width: 70%; height: auto;" alt="" class="card-img center">
+                <p class="card-text mt-3">7. Setelah selesai, klik tombol "Proses Gambar" yang terletak di bawah canvas</p>
+                <p class="card-text">8. Maka akan muncul romanisasi atau huruf latin dari silabel tersebut</p>
+                <img src="{{ url_for('static', filename='assets/Capture3.PNG') }}" style="border:  1px solid #000; width: 70%; height: auto;" alt="" class="card-img">
+                <p class="card-text mt-3">8. Selamat belajar, 안녕!</p>
+            </div>
+            </div>
+          </div>
+    </div>
+    <div class="container center mt-5">
+        <div class="col-sm-12 p-1 ">
+            <div class="card border-dark mb-3 shadow" id="menu_belajar">
+              <div class="card-body">
+                  <div class="card-header center bg-primary text-white p-3"><h5>MENU BELAJAR</h5></div>
+                  <p class="card-text mt-3">1. Terdapat 3 menu pembelajaran hangeul</p>
+                  <img src="{{ url_for('static', filename='assets/1.PNG') }}" style="border: 1px solid #000; width: 70%; height: auto;" alt="" class="card-img">
+                  <p class="card-text mt-3">2. Klik pada salah satu menu untuk belajar (contoh : Huruf Konsonan)</p>
+                  <p class="card-text mt-3">3. Halaman Huruf Konsonan akan tampil seperti di bawah ini</p>
+                  <img src="{{ url_for('static', filename='assets/2.PNG') }}" style="border: 1px solid #000; width: 70%; height: auto;" alt="" class="card-img">
+                  <p class="card-text mt-3">4. Untuk melihat cara baca dan cara penulisan huruf tersebut, klik salah satu huruf tersebut</p>
+                  <p class="card-text mt-3">5. Setelah salah satu huruf diklik, maka akan menampilkan pop-up seperti di bawah ini</p>
+                  <img src="{{ url_for('static', filename='assets/3.PNG') }}" style="border: 1px solid #000; width: 70%; height: auto;" alt="" class="card-img">
+                  <p class="card-text mt-3">6. Fitur ini dapat dijalankan pada seluruh huruf konsonan maupun huruf vokal</p>
+                  <p class="card-text mt-3">7. Selamat belajar, 안녕!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="top" class="container center mt-3 mb-5">
+        <button class="button1 tsize" onclick="scrollToTop()" style="background-color: #92A8D1;">KEMBALI KE ATAS</button>
+    </div>
+
+      <!-- footer -->
+  <div class="p-3" style="background-color: #92A8D1;">
+    <center>&copy; 2023; vasyilla</center>
+  </div>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/global.css') }}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/canvas.js') }}" defer></script>
+  <title>Huruf Konsonan</title>
+</head>
+
+<body class="bgcolor">
+
+  <!-- navbar -->
+  <nav class="navbar-float">
+    <section class="nav-item mx-auto tsize">
+      <div class="dropdown mx-2">
+        <button class="nav-text-active dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          BELAJAR
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="#">Huruf Konsonan</a></li>
+          <li><a class="dropdown-item" href="huruf-vokal">Huruf Vokal</a></li>
+          <li><a class="dropdown-item" href="penulisan-silabel">Penulisan Silabel</a></li>
+        </ul>
+      </div>
+      <a href="latihan" class="nav-text-active mx-2">LATIHAN</a>
+      <a href="/" class="nav-text-active mx-2">TUTORIAL</a>
+    </section>
+  </nav>
+
+  <!-- breadcrumb -->
+  <div class="container-fluid px-5 ptop">
+    <section aria-label="breadcrumb">
+      <ol class="breadcrumb tsize">
+        <li class="breadcrumb-item">Belajar</li>
+        <li class="breadcrumb-item">Huruf Konsonan</li>
+      </ol>
+    </section>
+  </div>
+
+  <!-- konten -->
+  <div class="card-container p-3">
+    <div class="row">
+      <div class="col center">
+        <img src="{{ url_for('static', filename='assets/konsonan/giyeok.png') }}" alt="" class="card1" onclick="openModal('giyeok', 'modalk')">
+      </div>
+      <div class="col center">
+        <img src="{{ url_for('static', filename='assets/konsonan/nieun.png') }}" alt="" class="card1" onclick="openModal('nieun', 'modalk')">
+      </div>
+      <div class="col center">
+        <img src="{{ url_for('static', filename='assets/konsonan/digeut.png') }}" alt="" class="card1" onclick="openModal('digeut', 'modalk')">
+      </div>
+      <div class="col center ">
+        <img src="{{ url_for('static', filename='assets/konsonan/rieul.png') }}" alt="" class="card1" onclick="openModal('rieul', 'modalk')">
+      </div>
+      <div class="col center ">
+        <img src="{{ url_for('static', filename='assets/konsonan/mieum.png') }}" alt="" class="card1" onclick="openModal('mieum', 'modalk')">
+      </div>
+    </div>
+    <div class="d-flex row">
+      <div class="col center">
+        <img src="{{ url_for('static', filename='assets/konsonan/bieup.png') }}" alt="" class="card1" onclick="openModal('bieup', 'modalk')">
+      </div>
+      <div class="col center">
+        <img src="{{ url_for('static', filename='assets/konsonan/siot.png') }}" alt="" class="card1" onclick="openModal('siot', 'modalk')">
+      </div>
+      <div class="col center">
+        <img src="{{ url_for('static', filename='assets/konsonan/ieung.png') }}" alt="" class="card1" onclick="openModal('ieung', 'modalk')">
+      </div>
+      <div class="col center ">
+        <img src="{{ url_for('static', filename='assets/konsonan/jieut.png') }}" alt="" class="card1" onclick="openModal('jieut', 'modalk')">
+      </div>
+      <div class="col center ">
+        <img src="{{ url_for('static', filename='assets/konsonan/chieut.png') }}" alt="" class="card1" onclick="openModal('chieut', 'modalk')">
+      </div>
+    </div>
+    <div class="d-flex row">
+      <div class="col center">
+        <img src="{{ url_for('static', filename='assets/konsonan/kieuk.png') }}" alt="" class="card1" onclick="openModal('kieuk', 'modalk')">
+      </div>
+      <div class="col center">
+        <img src="{{ url_for('static', filename='assets/konsonan/tieut.png') }}" alt="" class="card1" onclick="openModal('tieut', 'modalk')">
+      </div>
+      <div class="col center">
+        <img src="{{ url_for('static', filename='assets/konsonan/pieup.png') }}" alt="" class="card1" onclick="openModal('pieup', 'modalk')">
+      </div>
+      <div class="col center ">
+        <img src="{{ url_for('static', filename='assets/konsonan/hieut.png') }}" alt="" class="card1" onclick="openModal('hieut', 'modalk')">
+      </div>
+    </div>
+  </div>
+  
+  
+  <!-- Modal -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <img id="modalHeader" src="" alt="Modal Header" class="modal-header-img">
+        <span class="close" onclick="closeModal()">&times;</span>
+      </div>
+      <img id="modalImage" class="modal-content-img" src="" alt="Modal Image">
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div>
+    <center class="m-2">&copy; 2023; vasyilla</center>
+  </div>
+</body>
+</html>
