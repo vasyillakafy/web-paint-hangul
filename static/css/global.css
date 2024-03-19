@@ -26,6 +26,15 @@
     border-radius: 50px;
   }
 
+  .button1:hover,
+  .button1:focus {
+    color: #000;
+    background-color: rgb(251, 251, 251);
+    box-shadow: 1px 5px 7px 5px rgba(0,0,0,.1);
+    text-decoration: none;
+    cursor: pointer;
+  }
+
 .navbar-float{
     display:flex; 
     position:absolute;
@@ -75,6 +84,11 @@
     padding: 12px;
     border-radius: 20px;
     border: 2px solid #000;
+}
+
+.img-silabel{
+    width: 500px;
+    height: auto;
 }
 
 .pv{
@@ -190,20 +204,27 @@ canvas {
 
 @media screen and (max-width: 720px) {
     *{
-        font-size: 12px;
+        font-size: 13px;
     }
     .img-silabel{
         width: 300px;
-        height: 120px;
+        height: auto;
     }
     .modal {
-        padding: 100px 30px 0px 30px;
+        padding: 150px 10px 0px 10px;
     }
     .modal-header-img{
         width: 30%;
     }
     .close {
         font-size: 20px;
+    }
+    .card1{
+        width: 100px;
+        height: 100px;
+    }
+    .pv{
+        padding: 12px 30px;
     }
 }
 
@@ -214,6 +235,10 @@ canvas {
     .modal-header-img{
         width: 30%;
     }
+    .img-silabel{
+        width: 300px;
+        height: auto;
+    }
 }
 
 @media screen and (min-width: 900px) and (max-width: 1120px) {
@@ -222,6 +247,10 @@ canvas {
     }
     .modal-header-img{
         width: 30%;
+    }
+    .img-silabel{
+        width: 300px;
+        height: auto;
     }
 }
 

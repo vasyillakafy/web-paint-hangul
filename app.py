@@ -28,7 +28,7 @@ class_labels = ['A', 'Ae',
 
 @app.route("/")
 def main():
-    return render_template('tutorial.html')
+    return render_template('index.html')
 
 @app.route('/latihan')
 def tutorial():
