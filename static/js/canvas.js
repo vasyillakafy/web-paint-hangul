@@ -29,9 +29,27 @@
   }
 // ---------------------------------------------------------------------------------------------------
 // ----------------------------------------- C A N V A S ---------------------------------------------
+
+var selectedOption;
+var color;
+var line;
+
+$(document).ready(function() {
+  function updateSelectedOption() {
+    selectedOption = $("input:radio[name=option]:checked").val();
+    color = (selectedOption === 'brush') ? '#FFF' : '#000';
+    line = (selectedOption === 'brush') ? 10 : 40; // Lebar garis 
+  }
+  updateSelectedOption();
+
+  // Update selectedOption, color, and line when the radio button changes
+  $('input[type=radio][name=option]').change(function() {
+    updateSelectedOption();
+  });
+});
+
 var canvas = document.getElementById("draw");
 var ctx = canvas.getContext("2d");
-var toolSelect = document.getElementById("tool");
 var w=$(window).width();
 var h=$(window).height();
 
@@ -54,10 +72,6 @@ function setPosition(e) {
 
 function draw(e) {
   if (!isDrawing) return;
-
-  var color = (toolSelect.value === 'brush') ? '#FFF' : '#000';
-  var line = (toolSelect.value === 'brush') ? 10 : 30; // Lebar garis 
-
   if (e.buttons !== 1) return; // if mouse is not clicked, do not go further
   ctx.beginPath(); // begin the drawing path
   ctx.lineWidth = line;
@@ -80,12 +94,23 @@ canvas.addEventListener("mouseup", function() {
 canvas.addEventListener("mouseleave", function() {
   isDrawing = false;
 });
+
+$('#refreshButton').click(function() {
+  refresh();
+});
+
+function refresh(){
+  ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+  ctx.fillStyle = '#000000';
+  ctx.fillRect(0, 0, canvas.width, canvas.height); // Fill canvas with black color
+}
+
 // ----------------------------------------- C A N V A S ---------------------------------------------
 // ---------------------------------------------------------------------------------------------------
 
 
 // ---------------------------------------------------------------------------------------------------
-// ----------------------------------------PRE PROCESSING---------------------------------------------
+// ----------------------------------------PROCESSING---------------------------------------------
 var processAndSaveButton = document.getElementById("processAndSaveButton");
 processAndSaveButton.addEventListener("click", function() {
   var imageDataURL = canvas.toDataURL();
@@ -135,5 +160,5 @@ processAndSaveButton.addEventListener("click", function() {
   });
 });
 
-// ----------------------------------------PRE PROCESSING---------------------------------------------
+// ----------------------------------------PROCESSING---------------------------------------------
 // ---------------------------------------------------------------------------------------------------
