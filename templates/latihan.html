@@ -15,6 +15,7 @@
   <!-- navbar -->
   <nav class="navbar-float">
     <section class="nav-item mx-auto tsize">
+      <a href="/" class="nav-text-active mx-2">TUTORIAL</a>
       <div class="dropdown mx-2">
         <button class="nav-text-active dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
           BELAJAR
@@ -26,7 +27,6 @@
         </ul>
       </div>
       <a href="#" class="nav-text-active mx-2">LATIHAN</a>
-      <a href="/" class="nav-text-active mx-2">TUTORIAL</a>
     </section>
   </nav>
 
@@ -37,35 +37,42 @@
         Your browser does not support the canvas element.
       </canvas>
     </div>
-    <div>
-      <div class="menu2 center mt-3">
-        <select id="tool" class="button1 tsize">
-          <option value="brush">Kuas</option>
-          <option value="eraser">Penghapus</option>
-        </select>
+    <div class="row mx-5">
+      <div class="col-md-4 col-sm-6 col-6 mt-3">
+        <button id="refreshButton" class="button1 tsize">Refresh Canvas</button>
       </div>
-      <div class="menu2 center mt-3">
+      <div class="col-md-4 col-sm-6 col-6 mt-3">
         <button id="processAndSaveButton" class="button1 tsize">Proses Gambar</button>
       </div>
+      <div class="col-md-4 col-sm-12 col-12 mt-3 center" id="tool">
+        <input type="radio" class="form-check-input mx-1" id="brush" name="option" value="brush" checked="checked"> &nbsp;
+        <label class="form-check-label me-3" for="brush" >Kuas</label>
+        <input type="radio" class="form-check-input" id="eraser" name="option" value="eraser"> &nbsp;
+        <label class="form-check-label" for="eraser">Penghapus</label>
+    </div>
     </div>
   </div>
-
 
   <div class="menu">
-    <div class="center mt-2 mb-5">
-      <h5 class="predict">Predicted Class &nbsp; : &nbsp;&nbsp;<span id="predictedClass"></span></h5>
+    <div class="row mx-4 mb-4 line-red">
+      <div class="form-control">
+        <h5 class="predict">Predicted Class &nbsp; : &nbsp;&nbsp;<span id="predictedClass"></span></h5>
+      </div>
     </div>
-    <div class="menu2">
-      <p class="center tsize">Resized Image</p>
-      <img class="img box" id="resizedImage" src="">
+    <div class="row">
+      <div class="col">
+        <div>
+          <p class="center tsize">Resized Image</p>
+          <img class="img box" id="resizedImage" src=""> 
+        </div>
+      </div>
+      <div class="col card-container line-red p-4">
+        <p class="bold center p-2">Cara Penggunaan</p>
+        <p>1. Arahkan kursor pada canvas hitam. Tulis silabel atau suku kata yang terdiri dari 2 huruf</p>
+        <p>2. (1 Konsonan + 1 Vokal)</p>
+        <p>3. Tuliskan silabel dengan jelas dan besar, <b>ditengah-tengah canvas</b></p>
+      </div>
     </div>
-    <!-- <div class="menu2">
-      <p class="center tsize">Dilated Image</p>
-      <img class="img box" id="dilatedImage" src="">
-    </div> -->
   </div>
-
-  
-
 </body>
 </html>
