@@ -144,6 +144,10 @@ canvas {
     font-weight: bold;
 }
 
+.line-red{
+    border: 2px solid #f90000;
+}
+
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -225,6 +229,13 @@ canvas {
     }
     .pv{
         padding: 12px 30px;
+    }
+    .button1 {
+        width: 160px;
+        padding: 10px;
+    }
+    .tsize{
+        font-size: 14px;
     }
 }
 
