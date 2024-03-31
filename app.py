@@ -55,10 +55,10 @@ def process_image():
     image = Image.open(io.BytesIO(base64.b64decode(image_data)))
     
     width, height = image.size
-    left = 150  # Jarak dari kiri
-    upper = 140  # Jarak dari atas
-    right = width - 200  # Jarak dari kanan (lebar asli dikurangi 100 piksel)
-    lower = height - 40  # Jarak dari bawah (tinggi asli dikurangi 100 piksel)
+    left = 200  # Jarak dari kiri
+    upper = 160  # Jarak dari atas
+    right = width - 250  # Jarak dari kanan (lebar asli dikurangi 100 piksel)
+    lower = height - 90  # Jarak dari bawah (tinggi asli dikurangi 100 piksel)
 
     # Melakukan cropping dan resize
     cropped_image = image.crop((left, upper, right, lower))
