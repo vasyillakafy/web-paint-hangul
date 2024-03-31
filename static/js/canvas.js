@@ -27,6 +27,21 @@
         element.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   }
+
+  // Fungsi untuk hide box resized image
+  var resizedImage = document.getElementById('resizedbox');
+  var predictedClass = document.getElementById('predictedClass');
+
+  function toggleImageVisibility() {
+    if (predictedClass.textContent.trim() === "") {
+      resizedImage.style.display = 'none';
+    } else {
+      resizedImage.style.display = 'block';
+    }
+  }
+  predictedClass.addEventListener('DOMSubtreeModified', toggleImageVisibility);
+  toggleImageVisibility();
+
 // ---------------------------------------------------------------------------------------------------
 // ----------------------------------------- C A N V A S ---------------------------------------------
 
@@ -38,7 +53,7 @@ $(document).ready(function() {
   function updateSelectedOption() {
     selectedOption = $("input:radio[name=option]:checked").val();
     color = (selectedOption === 'brush') ? '#FFF' : '#000';
-    line = (selectedOption === 'brush') ? 10 : 40; // Lebar garis 
+    line = (selectedOption === 'brush') ? 7 : 20; // Lebar garis 
   }
   updateSelectedOption();
 
@@ -49,60 +64,85 @@ $(document).ready(function() {
 });
 
 var canvas = document.getElementById("draw");
-var ctx = canvas.getContext("2d");
-var w=$(window).width();
-var h=$(window).height();
+var mousePressed = false;
+var lastX, lastY;
+var ctx = canvas.getContext("2d"); //kuas
+var dashctx = canvas.getContext("2d"); //garis kotak
 
-var canvasRect = canvas.getBoundingClientRect(); // Mendapatkan posisi dan ukuran aktual canvas di layar
-canvas.width = canvasRect.width; 
+canvas.style.cursor = "crosshair";
 
-document.getElementById("draw").style.cursor = "crosshair";
+$(document).ready(function() {
+  function dash(){
+    dashctx.setLineDash([5, 5]);
+    dashctx.lineWidth = 1;
+    dashctx.strokeStyle = 'red';
+    dashctx.strokeRect(205, 160, 250, 240); 
+  }
+  dash();
+  
+  $('#refreshButton').click(function() {
+    refresh();
+    dash();
+  });
+});
+
+var canvasRect = canvas.getBoundingClientRect();
+canvas.width = canvasRect.width;
+
 ctx.fillStyle = '#000000';
-ctx.fillRect(0, 0, w, h);
+ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
-// initialize position as 0,0
-var pos = { x: 0, y: 0 };
-var isDrawing = false;
+function InitThis() {
+    $('#draw').mousedown(function (e) {
+        mousePressed = true;
+        Draw(e.pageX - $(this).offset().left, 
+              e.pageY - $(this).offset().top, 
+              false
+        );
+    });
 
-// new position from mouse events
-function setPosition(e) {
-  pos.x = e.clientX - canvasRect.left;
-  pos.y = e.clientY - canvasRect.top;
+    $('#draw').mousemove(function (e) {
+      if (mousePressed) {
+        Draw(e.pageX - $(this).offset().left, 
+              e.pageY - $(this).offset().top, 
+              true
+        );
+      }
+    });
+
+    $('#draw').mouseup(function (e) {
+        mousePressed = false;
+    });
+    $('#draw').mouseleave(function (e) {
+        mousePressed = false;
+    });
 }
 
-function draw(e) {
-  if (!isDrawing) return;
-  if (e.buttons !== 1) return; // if mouse is not clicked, do not go further
-  ctx.beginPath(); // begin the drawing path
-  ctx.lineWidth = line;
-  ctx.lineCap = "round"; // rounded end cap
-  ctx.strokeStyle = color;
-  ctx.moveTo(pos.x, pos.y); // from position
-  setPosition(e);
-  ctx.lineTo(pos.x, pos.y); // to position
-  ctx.stroke(); // draw it!
+function Draw(x, y, isDown) {
+    if (isDown) {
+        ctx.setLineDash([0, 0]); 
+        ctx.beginPath();
+        ctx.strokeStyle = color;
+        ctx.lineWidth = line;
+        ctx.lineJoin = "round";
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(x, y);
+        ctx.closePath();
+        ctx.stroke();
+    }
+    lastX = x; 
+    lastY = y;
 }
 
-canvas.addEventListener("mousemove", draw);
-canvas.addEventListener("mousedown", function(e) {
-  isDrawing = true;
-  setPosition(e);
-});
-canvas.addEventListener("mouseup", function() {
-  isDrawing = false;
-});
-canvas.addEventListener("mouseleave", function() {
-  isDrawing = false;
-});
-
-$('#refreshButton').click(function() {
-  refresh();
-});
+$(function () {
+  InitThis();
+})
 
 function refresh(){
-  ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
   ctx.fillStyle = '#000000';
-  ctx.fillRect(0, 0, canvas.width, canvas.height); // Fill canvas with black color
+  ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 }
 
 // ----------------------------------------- C A N V A S ---------------------------------------------
