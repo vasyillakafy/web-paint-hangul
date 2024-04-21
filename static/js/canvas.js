@@ -3,8 +3,8 @@
         var modal = document.getElementById("myModal");
         var modalImage = document.getElementById("modalImage");
         var modalHeader = document.getElementById("modalHeader");
-        modalHeader.src = "static/assets/" + folder + "/" + letter + "_header.png";
-        modalImage.src = "static/assets/" + folder + "/" + letter + "_writing.png"
+        modalHeader.src = "static/assets/" + folder + "/" + letter + "_header.svg";
+        modalImage.src = "static/assets/" + folder + "/" + letter + "_writing.svg"
         modal.style.display = "block";
     }
 
