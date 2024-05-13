@@ -4,6 +4,7 @@ from PIL import Image
 import io
 import base64
 import numpy as np
+import tensorflow as tf
 
 
 app = Flask(__name__)
@@ -63,49 +64,38 @@ def process_image():
     # Melakukan cropping dan resize
     cropped_image = image.crop((left, upper, right, lower))
     resized = cropped_image.resize((32, 32))
+    resized = resized.convert('RGB')
 
-    # Konversi gambar ke mode RGB sebelum mendapatkan numpy array
-    resized_rgb = resized.convert('RGB')
     # Mendapatkan numpy array dari gambar
-    resized_rgb_np = np.array(resized_rgb)
-
-    # # Dilasi
-    # # gray = cv2.cvtColor(resized_rgb_np, cv2.COLOR_BGR2GRAY)
-    # kernel = np.ones((2, 2), np.uint8)
-    # morph_dilate = cv2.dilate(resized_rgb_np, kernel, iterations=1)
-
-    # Menambahkan dimensi channel
-    resized_channel = np.expand_dims(resized_rgb_np, axis=-1)
-    # Menambahkan dimensi batch size
-    resized_batch = np.expand_dims(resized_channel, axis=0)
-        
-    # Contoh praproses: normalisasi
-    preprocessed_image = resized_batch / 255.0
+    resized_np = np.array(resized)  
+    image_array = np.expand_dims(resized_np, axis=0)
+    preprocessed_image = image_array / 255.0
             
     # Lakukan prediksi dengan model
     prediction = model.predict(preprocessed_image)
-        
-    # Dapatkan hasil prediksi (misalnya, kelas dengan nilai tertinggi)
-    predicted_class_index = np.argmax(prediction)
-    predicted_class_label = class_labels[predicted_class_index] 
+    index = np.argmax(prediction)
+    label = class_labels[index] 
 
-    # # Konversi kembali ke gambar PIL
-    # dilated_pil = Image.fromarray(morph_dilate)
+    probabilities = tf.nn.softmax(prediction)
+    confidence = np.max(probabilities)
+    confidence = float(confidence)
+    confidence = confidence * 1000
+    # confidence = '{:.2%}'.format(np.max(prediction * 100))
+
+    result_text = ""
+    if confidence < 14:
+        result_text = "Tulis silabel dengan jelas"
 
     # Konversi gambar ke data URL
     buffered_resized = io.BytesIO()
     resized.save(buffered_resized, format="PNG")
     resized_data_uri = "data:image/png;base64," + base64.b64encode(buffered_resized.getvalue()).decode()
 
-    # buffered_dilated = io.BytesIO()
-    # dilated_pil.save(buffered_dilated, format="PNG")
-    # dilated_data_uri = "data:image/png;base64," + base64.b64encode(buffered_dilated.getvalue()).decode()
-    
     # Kembalikan data URI gambar dan hasil prediksi sebagai respons
     return jsonify({
         'resized_data_uri': resized_data_uri, 
-        # 'dilated_data_uri': dilated_data_uri,
-        'predicted_class': predicted_class_label  # Konversi ke integer untuk memastikan
+        'predicted_class': label,
+        'res' : result_text
     })
 
 

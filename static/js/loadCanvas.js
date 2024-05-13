@@ -124,12 +124,16 @@ processAndSaveButton.addEventListener("click", function() {
     // Ambil data URI gambar dari respons JSON
     var resizedDataURI = data.resized_data_uri;
     var predictedClass = data.predicted_class;
+    var text = data.res;
 
     // Setel atribut src dari elemen gambar
     resizedImage.src = resizedDataURI;
 
-    // Tampilkan kelas prediksi
-    predictedClassElement.textContent = predictedClass;
+    if(text){
+      predictedClassElement.textContent = text;
+    }else{
+      predictedClassElement.textContent = predictedClass;
+    }
   });
 });
 
